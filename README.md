@@ -1,11 +1,11 @@
 # the plan
 have some basic ground tiles
-and a way to organize them (2d array probably)
-player exists and can walk
-player can jump
-flagpole
-pits and the player can die
-enemies?
-coins and coin blocks
+\nand a way to organize them (2d array probably)
+\nplayer exists and can walk
+\nplayer can jump
+\nflagpole
+\npits and the player can die
+\nenemies?
+\ncoins and coin blocks
 # progress
 nothing yet
