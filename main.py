@@ -23,8 +23,8 @@ while not done:
 #	image = Image.new('1', (disp.width, disp.height))
 #	draw = ImageDraw.Draw(image)
 
-	image = sprites.write(image, 50, 50, 0)
-	image = sprites.write(image, 100, 50, 0)
+	image.paste(sprites.write(image, 0), (50, 50))
+	image.paste(sprites.write(image, 0), (100, 50))
 
 	disp.image(image)
 	disp.display()

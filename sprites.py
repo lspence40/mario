@@ -10,13 +10,13 @@ disp = Adafruit_SSD1306.SSD1306_128_64(rst=RST, i2c_address=0x3d)
 #image = Image.new('1', (disp.width, disp.height))
 #draw = ImageDraw.Draw(image)
 
-def write(image, x, y, id):
-	imageAdd = Image.new('1', (disp.width, disp.height))
+def write(image, id):
+	imageAdd = Image.new('1', (len(sprites[id][0]), len(sprites[id])))
 	draw = ImageDraw.Draw(imageAdd)
 
 	for i in range(len(sprites[id])):
 		for j in range(len(sprites[id][i])):
-			draw.point((x+i, y+j), sprites[id][i][j])
+			draw.point((i, j), sprites[id][i][j])
 	return imageAdd
 
 #	disp.image(image)
