@@ -1,6 +1,7 @@
 import Adafruit_SSD1306
 
 import sprites
+import world
 
 from PIL import Image
 from PIL import ImageDraw
@@ -20,12 +21,11 @@ draw = ImageDraw.Draw(image)
 done = False
 while not done:
 
-#	image = Image.new('1', (disp.width, disp.height))
-#	draw = ImageDraw.Draw(image)
-
-	image.paste(sprites.write(image, 0), (50, 50))
-	image.paste(sprites.write(image, 0), (100, 50))
+	for i in range(world.worldHeight()):
+		for j in range(world.worldWidth()):
+			image.paste(sprites.write(image, world.get(i, j)), (j*8, i*8))
 
 	disp.image(image)
 	disp.display()
 
+#image.paste(sprites.write(image, <id>), (<x>, <y>))
