@@ -2,6 +2,7 @@ import Adafruit_SSD1306
 
 import sprites
 import world
+import player
 
 from PIL import Image
 from PIL import ImageDraw
@@ -24,6 +25,9 @@ while not done:
 	for i in range(world.worldHeight()):
 		for j in range(world.worldWidth()):
 			image.paste(sprites.write(image, world.get(i, j)), (j*8, i*8))
+
+	player.doGravity()
+	image.paste(sprites.write(image, 3), (player.getPos()))
 
 	disp.image(image)
 	disp.display()
