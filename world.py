@@ -12,6 +12,9 @@ tiles = [
 def get(x, y):
 	return tiles[x][y]
 
+def getAll():
+	return tiles
+
 def worldHeight():
 	return len(tiles)
 

@@ -1,30 +1,43 @@
 import world
 
-xPos = 64
-xVel = 0
-yPos = 0
-yVel = 0
+pos = [64, 0]
+vel = [0, 0]
+size = [8, 8]
 
 def getPos():
-	return (xPos, yPos)
+	return (pos)
 
-def detectBlockUnder():
-	x = int(xPos/8)
-	y = int(yPos/8)
+def roundUp(num):
+	if num % 1 != 0:
+		num += 1
+	return int(num)
 
-	if not world.get(y, x) == 0:
-#		print(1)
-		return True
-#	print(0)
+def detectGroundUnder(x, y, w, h, g):
+	x = roundUp(x/8)
+	y = roundUp(y/8)
+	w = roundUp(w/8)
+	h = roundUp(h/8)
+	#print(x, end=' ')
+	#print(y, end=' ')
+	for i in range(int(w)):
+		for j in range(int(h)):
+			if g[x+i][y+j]:
+				return True
 	return False
 
 def doGravity():
-	global yVel
-	global yPos
-	yPos -= yVel
-	yVel -= 2
+	global pos
+	global vel
+	vel[1] -= 23
+	if detectGroundUnder(world.worldWidth()-pos[0], world.worldHeight()-pos[1], size[0], size[1], world.getAll()):
+		vel[1] = 0
+		while detectGroundUnder(world.worldWidth()-pos[0], world.worldHeight()-pos[1], size[0], size[1], world.getAll()):
+			pos[1] += 1
+	pos[1] -= vel[1]
 
-	if detectBlockUnder():
-		yVel = 0
-		while detectBlockUnder():
-			yPos += 1
+#ground = world.getAll()
+#for i in range(world.worldHeight()):
+#	print()
+#	for j in range(world.worldWidth()):
+#		print(detectGroundUnder(i*8, j*8, 8, 8, ground), end='\t')
+#print()
