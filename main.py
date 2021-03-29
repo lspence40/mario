@@ -24,7 +24,7 @@ while not done:
 
 	for i in range(world.worldHeight()):
 		for j in range(world.worldWidth()):
-			image.paste(sprites.write(image, world.get(i, j)), (j*8, i*8))
+			image.paste(sprites.write(image, world.get(i, j)), (j*8, i*8), (sprites.getSize(world.get(i, j))))
 
 	player.doGravity()
 	image.paste(sprites.write(image, 3), (player.getPos()))
@@ -32,4 +32,4 @@ while not done:
 	disp.image(image)
 	disp.display()
 
-#image.paste(sprites.write(image, <id>), (<x>, <y>))
+#image.paste(sprites.write(image, <id>), (<x>, <y>), sprites.getSize(<id>))

@@ -17,8 +17,6 @@ def detectGroundUnder(x, y, w, h, g):
 	y = roundUp(y/8)
 	w = roundUp(w/8)
 	h = roundUp(h/8)
-	#print(x, end=' ')
-	#print(y, end=' ')
 	for i in range(int(w)):
 		for j in range(int(h)):
 			if g[x+i][y+j]:
