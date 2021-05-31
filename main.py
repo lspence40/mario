@@ -14,8 +14,6 @@ disp.begin()
 disp.clear()
 disp.display()
 
-font = ImageFont.load_default()
-
 image = Image.new('1', (disp.width, disp.height))
 draw = ImageDraw.Draw(image)
 
@@ -24,12 +22,14 @@ while not done:
 
 	for i in range(world.worldHeight()):
 		for j in range(world.worldWidth()):
-			image.paste(sprites.write(image, world.get(i, j)), (j*8, i*8), (sprites.getSize(world.get(i, j))))
+			image.paste(sprites.write(world.get(i, j)), (j*8, i*8))
 
 	player.doGravity()
-	image.paste(sprites.write(image, 3), (player.getPos()))
+	pos = player.getPos();
+	print(pos)
+	image.paste(sprites.write(3), (pos[0], pos[1]))
 
 	disp.image(image)
 	disp.display()
 
-#image.paste(sprites.write(image, <id>), (<x>, <y>), sprites.getSize(<id>))
+#image.paste(sprites.write(<id>), (<x>, <y>))
