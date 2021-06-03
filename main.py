@@ -19,15 +19,16 @@ draw = ImageDraw.Draw(image)
 
 done = False
 while not done:
+	mario = player.Mario(64, 0)
 
 	for i in range(world.worldHeight()):
 		for j in range(world.worldWidth()):
 			image.paste(sprites.write(world.get(i, j)), (j*8, i*8))
 
-	player.doGravity()
-	pos = player.getPos();
-	print(pos)
+	mario.doGravity()
+	pos = mario.getPos()
 	image.paste(sprites.write(3), (pos[0], pos[1]))
+	print(pos)
 
 	disp.image(image)
 	disp.display()
